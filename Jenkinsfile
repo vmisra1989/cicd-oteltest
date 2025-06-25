@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "otel/opentelemetry-collector-k8s"
+        IMAGE_NAME = "vmisr1989/opentelemetry-collector-k8s"
         IMAGE_TAG = "latest"
         KUBECONFIG = '/Users/vinay/.kube/config'
     }
