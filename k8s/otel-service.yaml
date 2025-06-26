@@ -2,7 +2,11 @@ apiVersion: v1
 kind: Service
 metadata:
   name: otel-collector
+<<<<<<< HEAD
   namespace: otel-collector-observability-test
+=======
+  namespace: observability
+>>>>>>> 6932e97d3f58692eb2b01d08fe02853665891c8f
 spec:
   ports:
     - name: otlp-grpc

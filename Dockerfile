@@ -1,3 +1,4 @@
+
 FROM otel/opentelemetry-collector-k8s:latest
 
 # Copy custom config (optional)
