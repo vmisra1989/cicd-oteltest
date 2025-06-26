@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: otel-collector
-        image: otel/opentelemetry-collector-k8s:latest
+        image: docker.io/otel/opentelemetry-collector-contrib:latest
         imagePullPolicy: IfNotPresent
         args: ["--config=/etc/otel/otel-collector-config.yaml"]
         volumeMounts:
