@@ -17,7 +17,7 @@ pipeline {
             
             steps {
                 
-                
+               sh 'eval $(minikube docker-env)'
                 sh 'kubectl config current-context'
                 sh 'kubectl cluster-info'
                 sh 'kubectl apply -f k8s/otel-config.yaml'
