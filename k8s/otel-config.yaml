@@ -12,11 +12,10 @@ data:
           http:
 
     exporters:
-      logging:
-        loglevel: debug
+      debug: {}
 
     service:
       pipelines:
         traces:
           receivers: [otlp]
-          exporters: [logging]
+          exporters: [debug]
