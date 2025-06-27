@@ -1,7 +1,7 @@
+FROM otel/opentelemetry-collector-contrib:latest
 
-FROM otel/opentelemetry-collector-k8s:latest
-
-# Copy custom config (optional)
+# Copy your custom config
 COPY otel-collector-config.yaml /etc/otel/config.yaml
 
-CMD ["/otelcol-k8s", "--config", "/etc/otel/config.yaml"]
+# Run the collector
+CMD ["otelcol-contrib", "--config=/etc/otel/config.yaml"]
