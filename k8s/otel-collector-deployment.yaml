@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: otel-collector
-  namespace: otel-collector-observability-test
+  namespace: otel
 spec:
   replicas: 1
   selector:
@@ -15,13 +15,13 @@ spec:
     spec:
       containers:
       - name: otel-collector
-        image: otel/opentelemetry-collector-k8s:latest
+        image: otel/opentelemetry-collector-contrib:latest
         imagePullPolicy: IfNotPresent
-        args: ["--config=/etc/otel/otel-collector-config.yaml"]
+        args: ["--config=/etc/otel/config.yaml"]
         volumeMounts:
-        - name: otel-config-vol
-          mountPath: /etc/otel
+        - name: config-volume
+          mountPath: /etc/otel/
       volumes:
-      - name: otel-config-vol
+      - name: config-volume
         configMap:
-          name: otel-collector-config
+          name: otel-config
