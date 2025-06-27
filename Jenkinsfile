@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        IMAGE_NAME = "vmisra1989/otel-collector"
+        IMAGE_NAME = "vmisra1989/my-otel-contrib"
         IMAGE_TAG = "latest"
         KUBECONFIG = '/Users/vinay/.kube/config'
     }
