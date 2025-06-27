@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: otel-collector-config
-  namespace: otel-collector-observability-test
+  name: otel-config
+  namespace: otel
 data:
-  otel-collector-config.yaml: |
+  config.yaml: |
     receivers:
       otlp:
         protocols:
@@ -12,7 +12,8 @@ data:
           http:
 
     exporters:
-      debug: {}
+      logging:
+        loglevel: debug
 
     service:
       pipelines:
