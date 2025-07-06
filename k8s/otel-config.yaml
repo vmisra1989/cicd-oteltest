@@ -11,12 +11,24 @@ data:
           grpc:
           http:
 
+    processors:
+      batch:
+
     exporters:
       logging:
-        loglevel: debug
+        logLevel: debug
 
     service:
       pipelines:
         traces:
           receivers: [otlp]
-          exporters: [debug]
+          processors: [batch]
+          exporters: [logging]
+        metrics:
+          receivers: [otlp]
+          processors: [batch]
+          exporters: [logging]
+        logs:
+          receivers: [otlp]
+          processors: [batch]
+          exporters: [logging]
