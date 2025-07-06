@@ -15,7 +15,7 @@ data:
       batch:
 
     exporters:
-      debug:
+      debug:          # Changed from logging to debug
         logLevel: debug
 
     service:
