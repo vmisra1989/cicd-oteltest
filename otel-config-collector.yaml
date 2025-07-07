@@ -1,13 +1,12 @@
----
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: otel-agent-conf
+  name: otel-collector-conf
   labels:
     app: opentelemetry
-    component: otel-agent-conf
+    component: otel-collector-conf
 data:
-  otel-agent-config: |
+  otel-collector-config: |
     receivers:
       otlp:
         protocols:
@@ -15,30 +14,25 @@ data:
             endpoint: ${env:MY_POD_IP}:4317
           http:
             endpoint: ${env:MY_POD_IP}:4318
-    exporters:
-      otlp:
-        endpoint: "otel-collector.default:4317"
-        tls:
-          insecure: true
-        sending_queue:
-          num_consumers: 4
-          queue_size: 100
-        retry_on_failure:
-          enabled: true
     processors:
       batch:
       memory_limiter:
         # 80% of maximum memory up to 2G
-        limit_mib: 400
+        limit_mib: 1500
         # 25% of limit up to 2G
-        spike_limit_mib: 100
+        spike_limit_mib: 512
         check_interval: 5s
     extensions:
       zpages: {}
+    exporters:
+      otlp:
+        endpoint: "http://someotlp.target.com:4317" # Replace with a real endpoint.
+        tls:
+          insecure: true
     service:
       extensions: [zpages]
       pipelines:
-        traces:
+        traces/1:
           receivers: [otlp]
           processors: [memory_limiter, batch]
           exporters: [otlp]
