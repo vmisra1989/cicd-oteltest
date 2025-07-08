@@ -25,7 +25,7 @@ data:
     extensions:
       zpages: {}
     exporters:
-      otlp:
+      elasticapm:
         endpoint: "http://elastic-apm-server.elastic-system.svc:8200" # Replace with a real endpoint.
         tls:
           insecure: true
