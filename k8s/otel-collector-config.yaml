@@ -32,7 +32,7 @@ data:
     service:
       extensions: [zpages]
       pipelines:
-        traces/1:
+        traces:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          exporters: [otlp]
+          exporters: [elastic]
