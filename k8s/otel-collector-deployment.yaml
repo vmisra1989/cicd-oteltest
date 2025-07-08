@@ -21,9 +21,9 @@ spec:
     spec:
       containers:
       - command:
-          - "/otelcol"
+          - "/otelcontribcol"
           - "--config=/conf/otel-collector-config.yaml"
-        image: otel/opentelemetry-collector:latest
+        image: vmisra1989/my-otel-contrib:latest
         name: otel-collector
         resources:
           limits:
