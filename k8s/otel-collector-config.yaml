@@ -26,7 +26,7 @@ data:
       zpages: {}
     exporters:
       otlp:
-        endpoint: "http://someotlp.target.com:4317" # Replace with a real endpoint.
+        endpoint: "http://elastic-apm-server.elastic-system.svc:8200" # Replace with a real endpoint.
         tls:
           insecure: true
     service:
