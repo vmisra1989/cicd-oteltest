@@ -1,8 +1,5 @@
 pipelines:
-  traces:
-    receivers: [otlp]
-    processors: [batch]
-    exporters: [elastic] {
+  {
     agent any
 
     environment {
