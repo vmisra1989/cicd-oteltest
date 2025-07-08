@@ -1,8 +1,8 @@
 pipelines:
   traces:
     receivers: [otlp]
-    processors: [memory_limiter, batch]
-    exporters: [elasticapm] {
+    processors: [batch]
+    exporters: [elastic] {
     agent any
 
     environment {

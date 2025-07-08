@@ -25,8 +25,8 @@ data:
     extensions:
       zpages: {}
     exporters:
-      elasticapm:
-        endpoint: "http://elastic-apm-server.elastic-system.svc:8200" # Replace with a real endpoint.
+      elastic:
+        apm_server_url: "http://elastic-apm-server.elastic-system.svc:8200" # Replace with a real endpoint.
         tls:
           insecure: true
     service:
