@@ -40,7 +40,7 @@ pipeline {
                 
                     sh 'kubectl config current-context'
                     sh 'kubectl cluster-info'
-                    sh 'kubectl apply -f k8s/otel-config.yaml'
+                    sh 'kubectl apply -f k8s/otel-collector-config.yaml'
                     sh 'kubectl apply -f k8s/otel-collector-deployment.yaml'
                     sh 'kubectl apply -f k8s/otel-service.yaml'
                 }
