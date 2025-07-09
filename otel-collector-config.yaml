@@ -27,7 +27,7 @@ data:
         tls:
           insecure: true
       debug:
-        loglevel: debug
+        detailed: detailed
 
     extensions:
       zpages: {}
