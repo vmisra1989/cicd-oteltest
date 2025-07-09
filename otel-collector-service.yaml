@@ -4,10 +4,10 @@ metadata:
   name: otel-collector
   namespace: otel
   labels:
-    app: opentelemetry
+    app: otel-collector
 spec:
   selector:
-    app: opentelemetry
+    app: otel-collector
     component: collector
   ports:
     - name: grpc
