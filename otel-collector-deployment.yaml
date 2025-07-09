@@ -5,6 +5,7 @@ metadata:
   namespace: otel
   labels:
     app: opentelemetry
+    component: collector
 spec:
   replicas: 1
   selector:
@@ -18,17 +19,17 @@ spec:
         component: collector
     spec:
       containers:
-        - name: otel-collector
-          image: otel/opentelemetry-collector-contrib:latest
-          args:
-            - "--config=/etc/otel/otel-collector-config.yaml"
-          volumeMounts:
-            - name: config
-              mountPath: /etc/otel
-          ports:
-            - containerPort: 4317 # OTLP gRPC
-            - containerPort: 4318 # OTLP HTTP
-            - containerPort: 8888 # Metrics
+      - name: otel-collector
+        image: otel/opentelemetry-collector-contrib:latest
+        args:
+          - "--config=/etc/otel/otel-collector-config.yaml"
+        volumeMounts:
+          - name: config
+            mountPath: /etc/otel
+        ports:
+          - containerPort: 4317 # OTLP gRPC
+          - containerPort: 4318 # OTLP HTTP
+          - containerPort: 8888 # Metrics
       volumes:
         - name: config
           configMap:

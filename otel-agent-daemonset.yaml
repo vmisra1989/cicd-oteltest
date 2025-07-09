@@ -1,7 +1,9 @@
+# DaemonSet for otel-agent
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
   name: otel-agent
+  namespace: otel
   labels:
     app: opentelemetry
     component: otel-agent
@@ -20,7 +22,7 @@ spec:
       - command:
           - "/otelcol"
           - "--config=/conf/otel-agent-config.yaml"
-        image: otel/opentelemetry-collector:latest
+        image: otel/opentelemetry-collector-contrib:latest
         name: otel-agent
         resources:
           limits:
@@ -31,8 +33,8 @@ spec:
             memory: 100Mi
         ports:
         - containerPort: 55679 # ZPages endpoint.
-        - containerPort: 4317 # Default OpenTelemetry receiver port.
-        - containerPort: 8888  # Metrics.
+        - containerPort: 4317  # OTLP gRPC
+        - containerPort: 8888  # Metrics
         env:
           - name: MY_POD_IP
             valueFrom:
@@ -45,9 +47,9 @@ spec:
         - name: otel-agent-config-vol
           mountPath: /conf
       volumes:
-        - configMap:
-            name: otel-agent-conf
-            items:
-              - key: otel-agent-config
-                path: otel-agent-config.yaml
-          name: otel-agent-config-vol
+      - name: otel-agent-config-vol
+        configMap:
+          name: otel-agent-config
+          items:
+          - key: otel-agent-config.yaml
+            path: otel-agent-config.yaml
