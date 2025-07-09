@@ -21,7 +21,6 @@ spec:
       containers:
       - name: otel-agent
         image: otel/opentelemetry-collector-contrib:latest
-        command: ["otelcol-contrib"]
         resources:
           limits:
             cpu: 500m
