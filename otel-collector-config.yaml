@@ -4,7 +4,7 @@ metadata:
   name: otel-collector-config
   namespace: otel
   labels:
-    app: opentelemetry
+    app: otel-collector
     component: otel-collector-config
 data:
   otel-collector-config.yaml: |
@@ -22,8 +22,8 @@ data:
         check_interval: 5s
 
     exporters:
-      elastic:
-        apm_server_url: "http://elastic-apm-server.elastic-system.svc:4317"
+      otlp:
+        endpoint: "http://elastic-apm-server.elastic-system.svc:4317"
         tls:
           insecure: true
       logging:
@@ -38,8 +38,8 @@ data:
         traces:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          exporters: [elastic, logging]
+          exporters: [logging]
         metrics:
           receivers: [otlp]
           processors: [memory_limiter, batch]
-          exporters: [elastic, logging]
+          exporters: [logging]
