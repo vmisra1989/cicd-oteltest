@@ -26,8 +26,7 @@ data:
         endpoint: "http://elastic-apm-server.elastic-system.svc:4317"
         tls:
           insecure: true
-      debug:
-        detailed: detailed
+      debug: {}
 
     extensions:
       zpages: {}
