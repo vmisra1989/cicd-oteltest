@@ -24,8 +24,10 @@ data:
         check_interval: 5s
 
     exporters:
-      otlp:
-        endpoint: "http://elastic-apm-server.elastic-system.svc:4317"
+      elasticapm:
+        server_url: "http://elastic-apm-server.elastic-system.svc:8200"
+        service_name: "otel-collector"
+
         tls:
           insecure: true
       debug: {}
