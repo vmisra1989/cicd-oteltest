@@ -23,7 +23,7 @@ data:
 
     exporters:
       elastic:
-        apm_server_url: "http://elastic-apm-server.elastic-system.svc:8200"
+        apm_server_url: "http://elastic-apm-server.elastic-system.svc:4317"
         tls:
           insecure: true
       logging:
