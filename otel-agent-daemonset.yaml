@@ -5,25 +5,24 @@ metadata:
   name: otel-agent
   namespace: otel
   labels:
-    app: opentelemetry
+    app: otel-collector
     component: otel-agent
 spec:
   selector:
     matchLabels:
-      app: opentelemetry
+      app: otel-collector
       component: otel-agent
   template:
     metadata:
       labels:
-        app: opentelemetry
+        app: otel-collector
         component: otel-agent
     spec:
       containers:
-      - command:
-          - "/otelcol"
-          - "--config=/conf/otel-agent-config.yaml"
+      - name: otel-agent
         image: otel/opentelemetry-collector-contrib:latest
-        name: otel-agent
+        command: ["/otelcol-contrib"]
+        args: ["--config=/conf/otel-agent-config.yaml"]
         resources:
           limits:
             cpu: 500m
